@@ -13,7 +13,7 @@ public interface beanieDriveTrain {
 
     public void moveVolts();
 
-    public void moveArcade();
+    public void moveArcade(double d, double output);
 
     public Pose2d currentPose();
 
