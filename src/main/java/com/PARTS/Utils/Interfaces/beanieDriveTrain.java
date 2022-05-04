@@ -21,4 +21,6 @@ public interface beanieDriveTrain {
 
     public double getTurningRate();
 
+    public void stop();
+
 }

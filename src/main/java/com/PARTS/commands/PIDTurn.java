@@ -13,18 +13,18 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
-public class PIDDrive extends CommandBase {
+public class PIDTurn extends CommandBase {
   /** Creates a new PIDDrive. */
   double initAngle;
   double setPoint;
   com.PARTS.Utils.Interfaces.beanieDriveTrain driveTrain;
   double[] pidValues;
   PIDController PIDController;
-  public PIDDrive(beanieDriveTrain driveTrain, PIDValues drivingValues) {
+  public PIDTurn(beanieDriveTrain driveTrain, PIDValues turningValues) {
     // Use addRequirements() here to declare subsystem dependencies.
 
     this.driveTrain = driveTrain;
-    this.pidValues = drivingValues.getPIDValues();
+    this.pidValues = turningValues.getPIDValues();
     PIDController = new PIDController(pidValues[0], pidValues[1], pidValues[2]);
   }
 
@@ -44,7 +44,7 @@ public class PIDDrive extends CommandBase {
 
     speed = MathUtil.clamp(speed, -1, 1);
 
-    driveTrain.move(speed, speed);
+    driveTrain.move(speed, -speed);
 
   }
 
@@ -52,11 +52,13 @@ public class PIDDrive extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     driveTrain.stop();
+
+
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return PIDController.atSetpoint(); // todo: add velocity check
+    return PIDController.atSetpoint() && (driveTrain.getTurningRate() < .5);
   }
 }
