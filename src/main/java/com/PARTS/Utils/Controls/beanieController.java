@@ -27,6 +27,8 @@ public class beanieController {
 
     private dpadButton dpadUp;
 
+    private boolean isRumbling;
+
 
 
     public beanieController(int port){
@@ -107,7 +109,21 @@ public class beanieController {
     public void Rumbling(Rumbler rumbler){
         controller.setRumble(RumbleType.kLeftRumble, rumbler.getRumbler());
         controller.setRumble(RumbleType.kLeftRumble, rumbler.getRumbler());
+        if(rumbler == Rumbler.max || rumbler == Rumbler.half){
+            this.isRumbling = true;
+        }
+        else if(rumbler == Rumbler.stop){
+
+            this.isRumbling = false;
+
+        }
     }
+
+    public boolean isRumbling(){
+        return isRumbling;
+    }
+
+
 
     
 
