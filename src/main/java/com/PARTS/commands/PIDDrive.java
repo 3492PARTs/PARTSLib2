@@ -20,6 +20,12 @@ public class PIDDrive extends CommandBase {
   com.PARTS.Utils.Interfaces.beanieDriveTrain driveTrain;
   double[] pidValues;
   PIDController PIDController;
+
+   /**
+    * 
+    * @param driveTrain a drivetrain implementing the proper interface
+    * @param drivingValues tested pid values for a pid position based loop
+    */
   public PIDDrive(beanieDriveTrain driveTrain, PIDValues drivingValues) {
     // Use addRequirements() here to declare subsystem dependencies.
 

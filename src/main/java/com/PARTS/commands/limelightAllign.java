@@ -24,6 +24,12 @@ public class limelightAllign extends CommandBase {
   BeanieLimeLight bLimeLight;
   PIDController PIDController;
 
+  /**
+   * 
+   * @param driveTrain a drivetrain implementing the beanie drivetrain interface
+   * @param turningValues tested pid values stored in the PIDValues class
+   * @param limeLight an object of the BeanieLimeLight class
+   */
   /** Creates a new limelightAllign. */
   public limelightAllign(beanieDriveTrain driveTrain, PIDValues turningValues, BeanieLimeLight limeLight) {
     // Use addRequirements() here to declare subsystem dependencies.    

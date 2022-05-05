@@ -20,6 +20,11 @@ public class PIDTurn extends CommandBase {
   com.PARTS.Utils.Interfaces.beanieDriveTrain driveTrain;
   double[] pidValues;
   PIDController PIDController;
+  /**
+   * 
+   * @param driveTrain a drivetrain implementing the proper interface
+   * @param turningValues tested pid values for turning you can likely use the ones from the limelight
+   */
   public PIDTurn(beanieDriveTrain driveTrain, PIDValues turningValues) {
     // Use addRequirements() here to declare subsystem dependencies.
 

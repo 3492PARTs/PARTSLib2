@@ -30,7 +30,11 @@ public class beanieController {
     private boolean isRumbling;
 
 
-
+    /**
+     * 
+     * @param port the port the xbox controller should be in
+     * @apiNote this makes it easier to use commands on all buttons
+     */
     public beanieController(int port){
         controller = new XboxController(port);
 
