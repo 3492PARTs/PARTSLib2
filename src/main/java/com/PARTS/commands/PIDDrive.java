@@ -63,6 +63,6 @@ public class PIDDrive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return PIDController.atSetpoint(); // todo: add velocity check
+    return PIDController.atSetpoint() && (driveTrain.getPersistentDistanceMeasureLeft().getVelocity() < 1 && driveTrain.getPersistentDistanceMeasureRight().getVelocity() < 1); // todo: add velocity check
   }
 }
