@@ -4,11 +4,13 @@
 
 package com.PARTS.Utils.Interfaces;
 
+import com.PARTS.Utils.sensors.LinearDistance;
+
 import edu.wpi.first.math.geometry.Pose2d;
 
 /** Add your docs here. */
 public interface beanieDriveTrain {
-
+    
     public void move(double speed, double speed2);
 
     public void moveVolts();
@@ -20,6 +22,10 @@ public interface beanieDriveTrain {
     public double getAngle();
 
     public double getTurningRate();
+
+    public LinearDistance leftDistance();
+
+    public LinearDistance rightDistance();    
 
     public void stop();
 
