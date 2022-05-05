@@ -7,16 +7,21 @@ package com.PARTS.Utils.Interfaces;
 import com.PARTS.Utils.sensors.LinearDistance;
 
 import edu.wpi.first.math.geometry.Pose2d;
+
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /** Add your docs here. */
 public abstract class beanieDriveTrain extends SubsystemBase {
 
+    Gyro gyro;
 
-    public beanieDriveTrain(){
+    public beanieDriveTrain(Gyro gyro){
+        this.gyro = gyro;
 
     }
+
 
     public abstract void move(double speed, double speed2);
 
@@ -30,9 +35,13 @@ public abstract class beanieDriveTrain extends SubsystemBase {
          
     
 
-    public abstract double getAngle();
+    public  double getAngle(){
+        return gyro.getAngle();
+    }
 
-    public abstract double getTurningRate();
+    public double getTurningRate(){
+        return gyro.getRate();
+    }
 
     public abstract LinearDistance leftDistance();
 
