@@ -7,26 +7,37 @@ package com.PARTS.Utils.Interfaces;
 import com.PARTS.Utils.sensors.LinearDistance;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /** Add your docs here. */
-public interface beanieDriveTrain {
+public abstract class beanieDriveTrain extends SubsystemBase {
+
+
+    public beanieDriveTrain(){
+
+    }
+
+    public abstract void move(double speed, double speed2);
+
+    public abstract void moveVolts(double leftVoltage, double rightVoltage);
     
-    public void move(double speed, double speed2);
+    public abstract beanieDriveTrain getInstance();
 
-    public void moveVolts();
+    public abstract void moveArcade(double d, double output);
 
-    public void moveArcade(double d, double output);
+    public abstract Pose2d currentPose();
+         
+    
 
-    public Pose2d currentPose();
+    public abstract double getAngle();
 
-    public double getAngle();
+    public abstract double getTurningRate();
 
-    public double getTurningRate();
+    public abstract LinearDistance leftDistance();
 
-    public LinearDistance leftDistance();
+    public abstract LinearDistance rightDistance();    
 
-    public LinearDistance rightDistance();    
-
-    public void stop();
+    public abstract void stop();
 
 }
