@@ -21,6 +21,12 @@ public class SparkMaxDistanceValue implements EncoderValueInterface<CANSparkMax>
         return sparkMax.getEncoder().getPosition();
     }
 
+    @Override
+    public double getVelocity() {
+        // TODO Auto-generated method stub
+        return sparkMax.getEncoder().getVelocity();
+    }
+
 
 
 }

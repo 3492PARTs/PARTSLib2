@@ -23,4 +23,8 @@ public interface beanieDriveTrain {
 
     public void stop();
 
+    public EncoderValueInterface<?> getPersistentDistanceMeasureLeft();
+
+    public EncoderValueInterface<?> getPersistentDistanceMeasureRight();
+
 }

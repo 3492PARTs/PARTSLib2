@@ -6,12 +6,11 @@ package com.PARTS.Utils.Interfaces;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
 
 /** Add your docs here. */
 public class TalonSRXDistanceValue implements EncoderValueInterface<TalonSRX>{
     TalonSRX talonSRX;
-    TalonSRXDistanceValue(CANSparkMax sparkMax){
+    TalonSRXDistanceValue(TalonSRX talonSRX){
         this.talonSRX = talonSRX;
     }
 
@@ -20,6 +19,12 @@ public class TalonSRXDistanceValue implements EncoderValueInterface<TalonSRX>{
 
         return talonSRX.getSelectedSensorPosition();
     
+    }
+
+    @Override
+    public double getVelocity() {
+        // TODO Auto-generated method stub
+        return talonSRX.getSelectedSensorVelocity();
     }
     
 }
