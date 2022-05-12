@@ -32,6 +32,7 @@ public class PIDDrive extends CommandBase {
     this.driveTrain = driveTrain;
     this.pidValues = drivingValues.getPIDValues();
     PIDController = new PIDController(pidValues[0], pidValues[1], pidValues[2]);
+    addRequirements(driveTrain);
   }
 
   // Called when the command is initially scheduled.

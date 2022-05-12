@@ -37,6 +37,7 @@ public class limelightAllign extends CommandBase {
     this.pidValues = turningValues.getPIDValues();
     this.bLimeLight = limeLight;
     this.PIDController = new PIDController(pidValues[0], pidValues[1], pidValues[2]);
+    addRequirements(driveTrain);
   }
 
   // Called when the command is initially scheduled.
