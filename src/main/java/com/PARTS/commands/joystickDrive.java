@@ -4,6 +4,8 @@
 
 package com.PARTS.commands;
 
+import java.util.concurrent.Callable;
+
 import com.PARTS.Utils.Controls.beanieController;
 import com.PARTS.Utils.Interfaces.beanieDriveTrain;
 
@@ -12,18 +14,23 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class joystickDrive extends CommandBase {
   beanieDriveTrain bDriveTrain;
   beanieController controller;
+  Callable<Double> leftStick;
+   Callable<Double> rightStick;
   /** Creates a new joystickDrive. */
 
   /**
    * 
    * @param bDriveTrain the drivetrain object
-   * @param controller a beanie controller
+   * @param leftStick a function that gives the value of the joystick axis desired to control forward back rotation
+   * @param rightStick a function that gives the value of the joystick axis that controlls rotation
    */
-  public joystickDrive(beanieDriveTrain bDriveTrain, beanieController controller) {
+  public joystickDrive(beanieDriveTrain bDriveTrain, Callable<Double> leftStick, Callable<Double> rightStick) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(bDriveTrain);
     this.bDriveTrain = bDriveTrain;
-    this.controller = controller;
+    this.leftStick = leftStick;
+    this.rightStick = rightStick;
+
   }
 
   // Called when the command is initially scheduled.
@@ -34,7 +41,12 @@ public class joystickDrive extends CommandBase {
   @Override
   public void execute() {
 
-    bDriveTrain.moveArcade(controller.getLeftYAxis(), controller.getRightXAxis());
+    try {
+      bDriveTrain.moveArcade(rightStick.call(), leftStick.call());
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     
   }
 

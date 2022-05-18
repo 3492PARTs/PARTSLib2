@@ -48,10 +48,10 @@ public class LinearDistance{
     private void update() {
 
         for (int i = 0; i < groupOne.length; i++) {
-            groupOneTotals[i] = ((groupOne[i].getDistance()- initialGroupOne[i]) * wheelCircumference ) / gearRatio;
+            groupOneTotals[i] = ((groupOne[i].getDistanceRaw()- initialGroupOne[i]) * wheelCircumference ) / gearRatio;
         }
         for (int i = 0; i < groupTwo.length; i++) {
-            groupTwoTotals[i] = ((groupTwo[i].getDistance() - initialGroupTwo[i]) * wheelCircumference) / gearRatio;
+            groupTwoTotals[i] = ((groupTwo[i].getDistanceRaw() - initialGroupTwo[i]) * wheelCircumference) / gearRatio;
         }
     }
 

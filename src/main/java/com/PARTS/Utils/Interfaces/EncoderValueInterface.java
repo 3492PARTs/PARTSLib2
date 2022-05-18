@@ -7,6 +7,10 @@ package com.PARTS.Utils.Interfaces;
 /** Add your docs here. */
 public interface EncoderValueInterface<T> {
 
-public double getDistance();
+public double getDistanceRaw();
+
+public void setConversionFactor(double distPerRot);
+
+public double getDistanceInches();
 
 }

@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 
 /** Add your docs here. */
 public class SparkMaxDistanceValue implements EncoderValueInterface<CANSparkMax> {
+    double distPerRot;
 
     CANSparkMax sparkMax;
     SparkMaxDistanceValue(CANSparkMax sparkMax){
@@ -16,9 +17,25 @@ public class SparkMaxDistanceValue implements EncoderValueInterface<CANSparkMax>
     }
 
     @Override
-    public double getDistance() {
+    public double getDistanceRaw() {
         // TODO Auto-generated method stub
         return sparkMax.getEncoder().getPosition();
+    }
+
+
+
+    @Override
+    public void setConversionFactor(double distPerRot) {
+        // TODO Auto-generated method stub
+        this.distPerRot = distPerRot;
+        
+        
+    }
+
+    @Override
+    public double getDistanceInches() {
+        // TODO Auto-generated method stub
+        return getDistanceRaw() * distPerRot;
     }
 
 
