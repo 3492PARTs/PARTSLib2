@@ -7,7 +7,12 @@ package com.PARTS.Utils.dataHolders;
 /** Add your docs here. */
 public class PIDValues {
     double[] PIDValues;
-
+    /**
+     * 
+     * @param kp the tuned proportional gain (tune first )
+     * @param ki tuned integral gain (tune kd first) last resort
+     * @param kd tuned derivative gain (tune second)
+     */
     public PIDValues(double kp, double ki, double kd){
         this.PIDValues[0] = kp;
         this.PIDValues[1] = ki;

@@ -12,10 +12,10 @@ import com.PARTS.Utils.Interfaces.beanieDriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class joystickDrive extends CommandBase {
-  beanieDriveTrain bDriveTrain;
-  beanieController controller;
-  Callable<Double> leftStick;
-   Callable<Double> rightStick;
+    beanieDriveTrain bDriveTrain;
+    beanieController controller;
+    Callable<Double> leftStick;
+    Callable<Double> rightStick;
   /** Creates a new joystickDrive. */
 
   /**
@@ -34,8 +34,8 @@ public class joystickDrive extends CommandBase {
   }
 
   // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {}
+    @Override
+    public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
