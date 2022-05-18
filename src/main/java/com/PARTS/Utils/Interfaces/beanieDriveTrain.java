@@ -7,31 +7,49 @@ package com.PARTS.Utils.Interfaces;
 import com.PARTS.Utils.sensors.LinearDistance;
 
 import edu.wpi.first.math.geometry.Pose2d;
-
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /** Add your docs here. */
 public abstract class beanieDriveTrain extends SubsystemBase {
 
     Gyro gyro;
+    protected DifferentialDrive mDrive;
+    protected MotorControllerGroup leftControllerGroup, rightControllerGroup;
 
-    public beanieDriveTrain(Gyro gyro){
+
+    public beanieDriveTrain(Gyro gyro, MotorControllerGroup leftControllerGroup, MotorControllerGroup rightMotorControllerGroup){
         this.gyro = gyro;
-
+        this.leftControllerGroup = leftControllerGroup;
+        this.rightControllerGroup = rightMotorControllerGroup;
+        mDrive = new DifferentialDrive(leftControllerGroup, rightControllerGroup);
     }
 
+    /**
+     * @apiNote only use for auto these inputs are not squared
+     * @param left left percent output
+     * @param right right percent output 
+     */
+    public  void move(double left, double right){
+        mDrive.tankDrive(left, right, false);
+    }
 
-    public abstract void move(double speed, double speed2);
-
-    public abstract void moveVolts(double leftVoltage, double rightVoltage);
+    public void moveVolts(double leftVoltage, double rightVoltage){
+        leftControllerGroup.setVoltage(leftVoltage);
+        rightControllerGroup.setVoltage(rightVoltage);
+        mDrive.feed();
+        
+    }
     
     public abstract beanieDriveTrain getInstance();
 
     public abstract void moveArcade(double d, double output);
 
     public abstract Pose2d currentPose();
+
          
     
 
@@ -43,10 +61,18 @@ public abstract class beanieDriveTrain extends SubsystemBase {
         return gyro.getRate();
     }
 
+    public Rotation2d getRotation(){
+        return new Rotation2d(Math.toRadians(getAngle()));
+    }
+
     public abstract LinearDistance leftDistance();
 
     public abstract LinearDistance rightDistance();    
 
-    public abstract void stop();
+    public void stop(){
+        mDrive.tankDrive(0, 0);
+    }
+
+
 
 }
